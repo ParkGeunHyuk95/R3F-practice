@@ -1,5 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Center } from "@react-three/drei";
+import { OrbitControls, Center, useGLTF } from "@react-three/drei";
+import { useRef } from "react";
+import Shirt from "./component/Shirt";
 export const App = () => (
   <Canvas
     camera={{ position: [-1, 0, 5.5], fov: 50 }}
@@ -12,14 +14,5 @@ export const App = () => (
     <OrbitControls />
   </Canvas>
 );
-
-const Shirt = () => {
-  return (
-    <mesh>
-      <boxGeometry args={[0.9, 0.9, 0.9]} />
-      <meshNormalMaterial />
-    </mesh>
-  );
-};
 
 export default App;
