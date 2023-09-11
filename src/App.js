@@ -1,7 +1,11 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
 export const App = () => (
-  <Canvas camera={{ position: [-1, 0, 5.5], fov: 50 }}>
+  <Canvas
+    camera={{ position: [-1, 0, 5.5], fov: 50 }}
+    eventSource={document.getElementById("root")}
+    eventPrefix="client"
+  >
     <Center>
       <Shirt />
     </Center>
