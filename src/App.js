@@ -1,8 +1,18 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { Canvas } from "@react-three/fiber";
 
-function App() {
-  return <div></div>;
-}
+export const App = () => (
+  <Canvas>
+    <Shirt />
+  </Canvas>
+);
+
+const Shirt = () => {
+  return (
+    <mesh>
+      <boxGeometry args={[0.9, 0.9, 0.9]} />
+      <meshNormalMaterial />
+    </mesh>
+  );
+};
 
 export default App;
