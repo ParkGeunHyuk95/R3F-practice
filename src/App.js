@@ -1,14 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Center,
-  useGLTF,
-  Environment,
-  Backdrop,
-} from "@react-three/drei";
-import { useRef } from "react";
+import { OrbitControls, Center, Environment } from "@react-three/drei";
 import Shirt from "./component/Shirt";
 import BackDrop from "./component/BackDrop";
+import CameraRig from "./component/CameraRig";
 export const App = ({ position = [-1, 0, 2.5], fov = 25 }) => (
   <Canvas
     shadows
@@ -18,10 +12,12 @@ export const App = ({ position = [-1, 0, 2.5], fov = 25 }) => (
   >
     <ambientLight intensity={0.5} />
     <Environment preset="city" />
-    <Center>
-      <Shirt />1
-      <BackDrop />
-    </Center>
+    <CameraRig>
+      <Center>
+        <Shirt />1
+        <BackDrop />
+      </Center>
+    </CameraRig>
     <OrbitControls />
   </Canvas>
 );
