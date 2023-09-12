@@ -4,18 +4,18 @@ import React from "react";
 const BackDrop = () => {
   return (
     <AccumulativeShadows
-      temporal
-      frames={60}
-      alphaTest={0.85}
-      scale={10}
+      temporal //그림자를 좀 더 부드럽게
+      frames={60} // 그림자 누적에 사용되는 프레임 수, 높을수록 부드러운 그림자
+      alphaTest={0.85} //그림자 불투명도
+      scale={10} //크기
       rotation={[Math.PI / 2, 0, 0]}
       position={[0, 0, -0.14]}
     >
       <RandomizedLight
-        amount={4}
-        radius={9}
+        amount={4} //조명의 수
+        radius={9} //조명 반경
         intensity={0.55}
-        ambient={0.25}
+        ambient={0.25} //주변 조명 강도
         position={[5, 5, -10]}
       />
     </AccumulativeShadows>
