@@ -1,6 +1,7 @@
 import React from "react";
+import { AiFillCamera, AiOutlineArrowLeft } from "react-icons/ai";
 
-const Customizer = () => {
+const Customizer = ({ setStage }) => {
   const colors = [
     "#ccc",
     "#EFBD4E",
@@ -37,7 +38,11 @@ const Customizer = () => {
           DOWNLOAD
           <AiFillCamera size="1.3em" />
         </button>
-        <button className="exit" style={{ background: "black" }}>
+        <button
+          onClick={() => setStage("intro")}
+          className="exit"
+          style={{ background: "black" }}
+        >
           GO BACK
           <AiOutlineArrowLeft size="1.3em" />
         </button>
