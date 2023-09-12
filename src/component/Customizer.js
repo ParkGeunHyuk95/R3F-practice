@@ -1,5 +1,7 @@
 import React from "react";
 import { AiFillCamera, AiOutlineArrowLeft } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { colorState } from "../atoms";
 
 const Customizer = ({ setStage }) => {
   const colors = [
@@ -12,6 +14,7 @@ const Customizer = ({ setStage }) => {
     "Purple",
   ];
   const decals = ["react", "three2", "pmndrs"];
+  const [shirtColor, setShirtColor] = useRecoilState(colorState);
 
   return (
     <section key="custom">
@@ -22,6 +25,9 @@ const Customizer = ({ setStage }) => {
               key={color}
               className="circle"
               style={{ background: color }}
+              onClick={() => {
+                setShirtColor(color);
+              }}
             ></div>
           ))}
         </div>
@@ -34,14 +40,14 @@ const Customizer = ({ setStage }) => {
             ))}
           </div>
         </div>
-        <button className="share" style={{ background: "black" }}>
+        <button className="share" style={{ background: shirtColor }}>
           DOWNLOAD
           <AiFillCamera size="1.3em" />
         </button>
         <button
           onClick={() => setStage("intro")}
           className="exit"
-          style={{ background: "black" }}
+          style={{ background: shirtColor }}
         >
           GO BACK
           <AiOutlineArrowLeft size="1.3em" />

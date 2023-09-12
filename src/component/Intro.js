@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Logo } from "@pmndrs/branding";
 import { AiOutlineHighlight, AiOutlineShopping } from "react-icons/ai";
 
 const Intro = ({ setStage }) => {
+  const color = window.sessionStorage.getItem("color");
+
+  useEffect(() => {
+    console.log(color);
+  }, [color]);
   return (
     <section key="main">
       <div className="section--container">
