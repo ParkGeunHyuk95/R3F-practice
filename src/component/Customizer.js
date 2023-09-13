@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillCamera, AiOutlineArrowLeft } from "react-icons/ai";
 import { useRecoilState } from "recoil";
-import { colorState } from "../atoms";
+import { colorState, decalState } from "../atoms";
 
 const Customizer = ({ setStage }) => {
   const colors = [
@@ -15,7 +15,7 @@ const Customizer = ({ setStage }) => {
   ];
   const decals = ["react", "three2", "pmndrs"];
   const [shirtColor, setShirtColor] = useRecoilState(colorState);
-
+  const [decal, setDecal] = useRecoilState(decalState);
   return (
     <section key="custom">
       <div className="customizer">
@@ -35,7 +35,11 @@ const Customizer = ({ setStage }) => {
           <div className="decals--container">
             {decals.map((decal) => (
               <div key={decal} className="decal">
-                <img src={decal + "_thumb.png"} alt="brand" />
+                <img
+                  onClick={() => setDecal(decal)}
+                  src={decal + "_thumb.png"}
+                  alt="brand"
+                />
               </div>
             ))}
           </div>
