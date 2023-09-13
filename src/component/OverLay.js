@@ -3,9 +3,15 @@ import { Logo } from "@pmndrs/branding";
 import { AiOutlineShopping } from "react-icons/ai";
 import Intro from "./Intro";
 import Customizer from "./Customizer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 const OverLay = () => {
   const [stage, setStage] = useState("intro");
+  const transition = { type: "spring", duration: 0.8 };
+  const config = {
+    initial: { x: -100, opacity: 0, transition: { ...transition, delay: 0.5 } },
+    animate: { x: 0, opacity: 1, transition: { ...transition, delay: 0 } },
+    exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
+  };
   return (
     <div className="container">
       <motion.header
@@ -18,11 +24,13 @@ const OverLay = () => {
           <AiOutlineShopping size="3em" />
         </div>
       </motion.header>
-      {stage === "intro" ? (
-        <Intro setStage={setStage} />
-      ) : (
-        <Customizer setStage={setStage} />
-      )}
+      <AnimatePresence>
+        {stage === "intro" ? (
+          <Intro key="main" config={config} setStage={setStage} />
+        ) : (
+          <Customizer key="custom" config={config} setStage={setStage} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

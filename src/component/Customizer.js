@@ -2,8 +2,8 @@ import React from "react";
 import { AiFillCamera, AiOutlineArrowLeft } from "react-icons/ai";
 import { useRecoilState } from "recoil";
 import { colorState, decalState } from "../atoms";
-
-const Customizer = ({ setStage }) => {
+import { motion } from "framer-motion";
+const Customizer = ({ setStage, config }) => {
   const colors = [
     "#ccc",
     "#EFBD4E",
@@ -30,7 +30,7 @@ const Customizer = ({ setStage }) => {
     link.click();
   };
   return (
-    <section key="custom">
+    <motion.section {...config} key="custom">
       <div className="customizer">
         <div className="color-options">
           {colors.map((color) => (
@@ -74,7 +74,7 @@ const Customizer = ({ setStage }) => {
           <AiOutlineArrowLeft size="1.3em" />
         </button>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

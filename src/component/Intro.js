@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { Logo } from "@pmndrs/branding";
 import { AiOutlineHighlight, AiOutlineShopping } from "react-icons/ai";
-
-const Intro = ({ setStage }) => {
+import { motion } from "framer-motion";
+const Intro = ({ setStage, config }) => {
   const color = window.sessionStorage.getItem("color");
 
   useEffect(() => {
     console.log(color);
   }, [color]);
   return (
-    <section key="main">
+    <motion.section {...config} key="main">
       <div className="section--container">
         <div>
           <h1>LET'S DO IT.</h1>
@@ -30,7 +30,7 @@ const Intro = ({ setStage }) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
