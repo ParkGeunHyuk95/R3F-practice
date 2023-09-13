@@ -16,6 +16,19 @@ const Customizer = ({ setStage }) => {
   const decals = ["react", "three2", "pmndrs"];
   const [shirtColor, setShirtColor] = useRecoilState(colorState);
   const [decal, setDecal] = useRecoilState(decalState);
+
+  const onClickDownloadBtn = () => {
+    const link = document.createElement("a");
+    link.setAttribute("download", "canvas.png");
+    link.setAttribute(
+      "href",
+      document
+        .querySelector("canvas")
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream")
+    );
+    link.click();
+  };
   return (
     <section key="custom">
       <div className="customizer">
@@ -44,7 +57,11 @@ const Customizer = ({ setStage }) => {
             ))}
           </div>
         </div>
-        <button className="share" style={{ background: shirtColor }}>
+        <button
+          onClick={() => onClickDownloadBtn()}
+          className="share"
+          style={{ background: shirtColor }}
+        >
           DOWNLOAD
           <AiFillCamera size="1.3em" />
         </button>

@@ -8,6 +8,7 @@ export const App = ({ position = [-1, 0, 2.5], fov = 25 }) => {
   return (
     <Canvas
       shadows
+      gl={{ preserveDrawingBuffer: true }}
       camera={{ position, fov }}
       eventSource={document.getElementById("root")}
       eventPrefix="client"
